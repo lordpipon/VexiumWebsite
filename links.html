@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Vexium</title>
-<meta name="description" content="Whitelisted modded Minecraft server.">
+<title>Links - Vexium</title>
+<meta name="description" content="Vexium links.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200..700&display=swap" rel="stylesheet">
@@ -73,6 +73,10 @@ body {
   color: #fff;
   background: rgba(255,255,255,.08);
 }
+.nav-link.active {
+  color: #fac937;
+  background: rgba(250,201,55,.1);
+}
 .hero {
   display: flex;
   flex-direction: column;
@@ -139,49 +143,11 @@ body {
   from { transform: translate(0, 0) scale(1); }
   to { transform: translate(2%, -2%) scale(1.05); }
 }
-.hero-logo {
-  max-width: 100%;
-  margin: 0 1.5rem;
-  user-select: none;
-  animation: fadeUp 1s ease-out forwards;
-}
-.hero-logo img {
-  display: block;
-  width: 100%;
-  max-width: 700px;
-  height: auto;
-}
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(30px) scale(.95); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
-}
-.hero-support {
-  display: inline-flex;
-  align-items: center;
-  gap: .75rem;
-  background: rgba(255,255,255,.06);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(250, 201, 55, .2);
-  border-radius: 14px;
-  padding: 1rem 1.75rem;
-  color: #fac937;
-  text-decoration: none;
-  margin-top: 3rem;
-  font-size: 1.125rem;
-  font-weight: 600;
-  transition: all .25s;
-  animation: fadeUp 1s ease-out .2s both;
-}
-.hero-support:hover {
-  background: rgba(250, 201, 55, .1);
-  border-color: rgba(250, 201, 55, .4);
-  transform: translateY(-2px);
-}
 .content {
   max-width: 1440px;
   margin: 0 auto;
   padding: 1rem calc(1rem + env(safe-area-inset-right)) 1rem calc(1rem + env(safe-area-inset-left));
+  width: 100%;
 }
 @media (min-width: 992px) {
   .content { padding: 2rem calc(3rem + env(safe-area-inset-right)) 2rem calc(3rem + env(safe-area-inset-left)); }
@@ -263,6 +229,92 @@ body {
   transition: color .2s;
 }
 .footer-bottom a:hover { color: #fff; }
+.links-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: max(100vh, 600px);
+  position: relative;
+  isolation: isolate;
+  background: #1a1400;
+  overflow: hidden;
+}
+.links-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,.4) 0%, rgba(0,0,0,.9) 100%);
+}
+.links-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 420px;
+  padding: 0 1.5rem;
+}
+.links-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fac937;
+  margin-bottom: .5rem;
+  animation: fadeUp 1s ease-out forwards;
+}
+.links-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 14px;
+  text-decoration: none;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all .25s;
+  animation: fadeUp 1s ease-out forwards;
+  animation-fill-mode: both;
+}
+.links-card:nth-child(2) { animation-delay: .1s; }
+.links-card:nth-child(3) { animation-delay: .2s; }
+.links-card:nth-child(4) { animation-delay: .3s; }
+.links-card:nth-child(5) { animation-delay: .4s; }
+.links-card:hover {
+  background: rgba(255,255,255,.1);
+  border-color: rgba(250,201,55,.3);
+  transform: translateY(-2px);
+}
+.links-card-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+.links-card-label {
+  flex: 1;
+}
+.links-card-arrow {
+  color: #555;
+  font-size: 1.25rem;
+  transition: transform .2s;
+}
+.links-card:hover .links-card-arrow {
+  transform: translateX(3px);
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px) scale(.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
 </style>
 </head>
 <body>
@@ -274,7 +326,7 @@ body {
       </a>
       <nav>
         <ul class="nav-list">
-          <li><a href="/links" class="nav-link">Links</a></li>
+          <li><a href="/links" class="nav-link active">Links</a></li>
           <li><a href="https://discord.gg/Ss86HsfkSF" rel="noopener noreferrer" target="_blank" class="nav-link">Discord</a></li>
           <li><a href="https://mapvexium.aetherlyn.lol" rel="noopener noreferrer" target="_blank" class="nav-link">Map</a></li>
           <li><a href="https://drive.google.com/drive/folders/1pjsumJJ6YVrZrjSZAOAkYsQBgNJs3X3x?usp=sharing" rel="noopener noreferrer" target="_blank" class="nav-link">Modpack</a></li>
@@ -284,19 +336,53 @@ body {
   </header>
 
   <main>
-    <section class="hero">
+    <section class="links-section">
       <div class="hero-portal"></div>
       <div class="hero-portal2"></div>
       <div class="hero-portal3"></div>
-      <div class="hero-logo">
-        <img src="vexium.png" alt="Vexium">
+      <div class="links-inner">
+        <h1 class="links-title">Links</h1>
+
+        <a href="https://ko-fi.com/piponidlo" target="_blank" rel="noopener noreferrer" class="links-card">
+          <div class="links-card-icon" style="background:rgba(250,201,55,.15);">
+            <svg width="20" height="20" viewBox="0 0 38 38" fill="none">
+              <path d="M19 4L23.09 12.36L32 13.54L25.5 19.88L27.18 29L19 24.36L10.82 29L12.5 19.88L6 13.54L14.91 12.36L19 4Z" fill="#fac937"/>
+            </svg>
+          </div>
+          <span class="links-card-label">Support</span>
+          <span class="links-card-arrow">&rarr;</span>
+        </a>
+
+        <a href="https://tiktok.com/@piponidlo" target="_blank" rel="noopener noreferrer" class="links-card">
+          <div class="links-card-icon" style="background:rgba(255,255,255,.1);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
+              <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
+            </svg>
+          </div>
+          <span class="links-card-label">TikTok</span>
+          <span class="links-card-arrow">&rarr;</span>
+        </a>
+
+        <a href="https://discord.com/invite/Ss86HsfkSF" target="_blank" rel="noopener noreferrer" class="links-card">
+          <div class="links-card-icon" style="background:rgba(88,101,242,.15);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#5865f2">
+              <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+            </svg>
+          </div>
+          <span class="links-card-label">Discord</span>
+          <span class="links-card-arrow">&rarr;</span>
+        </a>
+
+        <a href="https://github.com/lordpipon/" target="_blank" rel="noopener noreferrer" class="links-card">
+          <div class="links-card-icon" style="background:rgba(255,255,255,.1);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+            </svg>
+          </div>
+          <span class="links-card-label">GitHub</span>
+          <span class="links-card-arrow">&rarr;</span>
+        </a>
       </div>
-      <a href="https://ko-fi.com/piponidlo" rel="noopener noreferrer" target="_blank" class="hero-support">
-        <svg width="20" height="20" viewBox="0 0 38 38" fill="none">
-          <path d="M19 4L23.09 12.36L32 13.54L25.5 19.88L27.18 29L19 24.36L10.82 29L12.5 19.88L6 13.54L14.91 12.36L19 4Z" fill="#fac937"/>
-        </svg>
-        Support the project
-      </a>
     </section>
   </main>
 
@@ -312,8 +398,8 @@ body {
       </div>
       <div class="footer-col-right">
         <ul class="footer-menu">
-          <li><a href="https://discord.gg/Ss86HsfkSF" rel="noopener noreferrer" target="_blank">Discord</a></li>
-          <li><a href="https://ko-fi.com/piponidlo" rel="noopener noreferrer" target="_blank">Support the project</a></li>
+          <li><a href="https://discord.gg/Ss86HsfkSF" target="_blank" rel="noopener noreferrer">Discord</a></li>
+          <li><a href="https://ko-fi.com/piponidlo" target="_blank" rel="noopener noreferrer">Support the project</a></li>
         </ul>
       </div>
     </div>
