@@ -81,7 +81,7 @@ body {
   min-height: max(100vh, 600px);
   position: relative;
   isolation: isolate;
-  background: #0a1628;
+  background: #0d0015;
   overflow: hidden;
 }
 .hero::before {
@@ -89,38 +89,55 @@ body {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: radial-gradient(ellipse at center, rgba(0,0,0,.35) 0%, rgba(0,0,0,.85) 100%);
+  background: radial-gradient(ellipse at center, rgba(0,0,0,.4) 0%, rgba(0,0,0,.9) 100%);
 }
 .hero-portal {
   position: absolute;
-  inset: -50%;
+  inset: -60%;
   z-index: -2;
   background:
-    conic-gradient(from 0deg, #7dd3fc, #e0f2fe, #bae6fd, #38bdf8, #7dd3fc, #e0f2fe, #bae6fd, #38bdf8, #7dd3fc),
-    conic-gradient(from 0deg, #bae6fd80, #e0f2fe80, #7dd3fc80, #38bdf880, #bae6fd80);
-  background-blend-mode: overlay;
-  animation: portalSpin 20s linear infinite, portalPulse 4s ease-in-out infinite alternate;
-  opacity: .35;
+    conic-gradient(from 0deg, #7c3aed, #c026d3, #a21caf, #6d28d9, #7c3aed, #c026d3, #a21caf, #6d28d9, #7c3aed),
+    conic-gradient(from 60deg, #4c1d95, #86198f, #9333ea, #a21caf, #4c1d95, #86198f, #9333ea, #a21caf, #4c1d95);
+  background-blend-mode: screen;
+  animation: portalSpin 10s linear infinite, portalPulse 2s ease-in-out infinite alternate;
+  opacity: .3;
+  filter: blur(1px);
 }
 .hero-portal2 {
   position: absolute;
-  inset: -25%;
+  inset: -40%;
   z-index: -2;
-  background: radial-gradient(circle at 30% 40%, rgba(186,230,253,.15) 0%, transparent 50%),
-              radial-gradient(circle at 70% 60%, rgba(56,189,248,.1) 0%, transparent 50%);
-  animation: portalDrift 12s ease-in-out infinite alternate;
+  background:
+    conic-gradient(from 180deg, #c026d3, #7c3aed80, #e879f9, #6d28d980, #c026d3, #7c3aed80, #e879f9, #6d28d980, #c026d3);
+  animation: portalSpin2 15s linear infinite reverse;
+  opacity: .25;
+  mix-blend-mode: screen;
+}
+.hero-portal3 {
+  position: absolute;
+  inset: -20%;
+  z-index: -2;
+  background:
+    radial-gradient(circle at 40% 50%, rgba(192,38,211,.2) 0%, transparent 40%),
+    radial-gradient(circle at 60% 50%, rgba(124,58,237,.15) 0%, transparent 40%),
+    radial-gradient(circle at 50% 30%, rgba(232,121,249,.1) 0%, transparent 30%);
+  animation: portalDrift 5s ease-in-out infinite alternate;
 }
 @keyframes portalSpin {
   from { transform: rotate(0deg) scale(1); }
   to { transform: rotate(360deg) scale(1); }
 }
+@keyframes portalSpin2 {
+  from { transform: rotate(0deg) scale(1.1); }
+  to { transform: rotate(360deg) scale(1.1); }
+}
 @keyframes portalPulse {
-  from { opacity: .3; }
-  to { opacity: .45; }
+  from { opacity: .2; }
+  to { opacity: .4; }
 }
 @keyframes portalDrift {
   from { transform: translate(0, 0) scale(1); }
-  to { transform: translate(3%, 2%) scale(1.1); }
+  to { transform: translate(2%, -2%) scale(1.05); }
 }
 .hero-logo {
   max-width: 100%;
@@ -269,6 +286,7 @@ body {
     <section class="hero">
       <div class="hero-portal"></div>
       <div class="hero-portal2"></div>
+      <div class="hero-portal3"></div>
       <div class="hero-logo">
         <img src="vexium.png" alt="Vexium">
       </div>
