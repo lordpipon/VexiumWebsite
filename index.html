@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vexium</title>
+<meta name="description" content="Whitelisted modded Minecraft server.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛏️</text></svg>">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+@font-face {
+  font-family: 'Catamaran';
+  src: local("Catamaran Variable"), local("Catamaran");
+  font-weight: 100 900;
+  font-display: swap;
+}
+body {
+  font-family: 'Catamaran', system-ui, sans-serif;
+  background: #000;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+}
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+.header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: linear-gradient(180deg, rgba(0,0,0,.75), transparent);
+}
+.header-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+@media (min-width: 992px) {
+  .header-inner { padding: 2rem 3rem; }
+}
+.logo-link {
+  display: block;
+  flex-shrink: 0;
+  height: 50px;
+  transition: filter .2s;
+}
+.logo-link:hover { filter: brightness(.6); }
+.logo-link img, .logo-link svg {
+  height: 100%;
+  width: auto;
+}
+.nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  list-style: none;
+}
+.nav-link {
+  color: #9ca3af;
+  font-size: 1.125rem;
+  letter-spacing: .025em;
+  line-height: 1.2;
+  padding: .5rem;
+  text-decoration: none;
+  font-weight: 200;
+  white-space: nowrap;
+  transition: color .3s;
+  position: relative;
+}
+.nav-link:hover { color: #f3f4f6; }
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: max(100vh, 600px);
+  position: relative;
+  isolation: isolate;
+  background: #4a4a4a;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(circle, rgba(0,0,0,.5), rgba(0,0,0,.9));
+}
+.hero-logo {
+  max-width: 100%;
+  margin: 0 1rem;
+  user-select: none;
+}
+.hero-logo img {
+  display: block;
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+}
+.no-drag {
+  -webkit-user-drag: none;
+  user-select: none;
+}
+.hero-support {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(0,0,0,.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  padding: 1.25rem 1.5rem;
+  color: #fac937;
+  text-decoration: none;
+  margin-top: 2.5rem;
+  transition: transform .2s;
+}
+.hero-support:hover { transform: scale(1.05); }
+.hero-support-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -.01em;
+  line-height: 1.2;
+}
+.content {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 1rem calc(1rem + env(safe-area-inset-right)) 1rem calc(1rem + env(safe-area-inset-left));
+}
+@media (min-width: 992px) {
+  .content { padding: 2rem calc(3rem + env(safe-area-inset-right)) 2rem calc(3rem + env(safe-area-inset-left)); }
+}
+.footer {
+  margin-top: auto;
+  background: #2a2a2a;
+  border-top: 1px solid rgba(255,255,255,.05);
+  color: #f0f4f7;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-block: 2rem;
+  min-height: 500px;
+  position: relative;
+  isolation: isolate;
+}
+.footer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(circle at bottom, transparent, rgba(0,0,0,.9));
+  background-size: 150% 200%;
+  background-position: bottom;
+  background-repeat: no-repeat;
+}
+.footer-top {
+  display: flex;
+  width: 100%;
+}
+.footer-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  height: 100%;
+}
+.footer-col-right {
+  grid-column: 3;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.footer-tagline {
+  margin-top: 1rem;
+  font-size: 1.125rem;
+}
+.footer-menu {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+.footer-menu li {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  color: #9ca3af;
+  text-align: right;
+  justify-content: flex-end;
+  transition: color .3s;
+}
+.footer-menu li:hover { color: #f3f4f6; }
+.footer-menu a {
+  text-decoration: none;
+  color: inherit;
+  font-size: 1.125rem;
+  letter-spacing: .025em;
+  line-height: 1.2;
+}
+.footer-bottom {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  gap: .5rem;
+}
+.footer-bottom p {
+  font-size: .875rem;
+}
+.footer-bottom a {
+  font-weight: 700;
+  text-decoration: underline;
+}
+.footer-bottom a:hover { text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="layout">
+  <header class="header">
+    <div class="header-inner">
+      <a href="/" class="logo-link" aria-label="Vexium home">
+        <img src="vexium.png" alt="Vexium" class="no-drag h-full w-auto object-contain">
+      </a>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="https://discord.gg/Ss86HsfkSF" rel="noopener noreferrer" target="_blank" class="nav-link">Discord</a></li>
+          <li><a href="https://drive.google.com/drive/folders/1pjsumJJ6YVrZrjSZAOAkYsQBgNJs3X3x?usp=sharing" rel="noopener noreferrer" target="_blank" class="nav-link">Modpack</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-logo">
+        <img src="vexium.png" alt="Vexium" class="no-drag" style="max-width:800px;width:100%;height:auto;">
+      </div>
+      <a href="https://ko-fi.com/piponidlo" rel="noopener noreferrer" target="_blank" class="hero-support">
+        <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
+          <path d="M19 4L23.09 12.36L32 13.54L25.5 19.88L27.18 29L19 24.36L10.82 29L12.5 19.88L6 13.54L14.91 12.36L19 4Z" fill="#fac937"/>
+        </svg>
+        <span class="hero-support-text">Support the project</span>
+      </a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="content footer-top">
+      <a href="/" class="logo-link" aria-label="Vexium home">
+        <img src="vexium.png" alt="Vexium" class="no-drag h-full w-auto object-contain">
+      </a>
+    </div>
+    <div class="content footer-grid">
+      <div class="footer-col">
+        <p class="footer-tagline">Whitelisted modded Minecraft server</p>
+      </div>
+      <div class="footer-col-right">
+        <ul class="footer-menu">
+          <li><a href="https://discord.gg/Ss86HsfkSF" rel="noopener noreferrer" target="_blank">Discord</a></li>
+          <li><a href="https://ko-fi.com/piponidlo" rel="noopener noreferrer" target="_blank">Support the project</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="content footer-bottom">
+      <p>&copy; 2026 <strong>Vexium</strong></p>
+      <p>web by <a href="https://tiktok.com/@piponidlo" rel="noopener noreferrer" target="_blank">lordpipon</a></p>
+    </div>
+  </footer>
+</div>
+</body>
+</html>
